@@ -1787,6 +1787,32 @@ cout<<"Not found";
 return 0;
 }
 ```
+O(n) - Linear search
+O(log n) - Binary search is faster.
+
+- Count number of +ve & -ve
+```c++
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int A[]={3,5,-2,9,-4,-10,-24,19,18,-7,8};
+    int pcount=0;
+    int ncount=0;
+    
+    for(int x:A)
+    {
+        if(x<0)
+            ncount++;
+        else
+            pcount++;
+    }
+    cout<<"-ve count "<< ncount<<" "<<"+ve count "<<pcount;
+
+return 0;
+}
+```
 
 
 
