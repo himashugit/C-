@@ -1814,6 +1814,178 @@ return 0;
 }
 ```
 
+- Linear Search
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int A[10]={3,5,3,9,-4,-10,-24,19,18,-7};
+    int key;
+    cout<<"Enter a key to search ";
+    cin>>key;
+    
+    for(int i=0;i<10;i++)
+    {
+        if(key==A[i])
+           cout<<"Element found at "<<i<<endl;
+    }
+    
+
+    return 0;
+}
+```
 
 
+- Minimum number in a list of array
 
+```c++
+#include <iostream>
+#include<climits>
+using namespace std;
+
+int main()
+{
+    int A[]={3,5,-2,9,-4,-10,-24,19,18,-7,8};
+    int min=INT_MAX;
+    
+    for(auto x:A)
+    {
+        if(x<min)
+            min=x;
+    }
+    cout<<"Min number is "<<min<<endl;
+
+return 0;
+}
+```
+- For Loop
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+   for (int i=1;i<=5;i++)
+   {
+       for(int j=1;j<=5;j++)
+       cout<<"("<<i<<","<<j<<")"<<endl ;
+   }
+
+cout<<endl;    
+    
+    return 0;
+}
+```
+- loop pattern
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+   int count=1;
+   
+       for (int i=0;i<4;i++)
+       {
+           for(int j=0;j<4;j++)
+           {
+              cout<<count<<" ";
+              count++; 
+           }
+         cout<<endl;    
+       }
+
+
+ return 0;
+}
+    
+```
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    
+    for(int i=0;i<4;i++)
+    {
+        for(int j=0;j<4;j++)
+        {
+        if(i>=j)
+            cout<<"* ";
+            
+        }
+    
+    cout<<endl;
+    }
+return 0;
+}
+```
+- Patterns using loop
+
+|  0| 1  | 2  |  3 |4   |
+|---|---|---|---|---|
+|  1 |  * |   |   |   |
+|  2 | *  | *  |   |   |
+|  3 |  * |  * |  * |   |
+|  3|  * |  * |  * |  * |
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    
+    for(int i=0;i<4;i++)
+    {
+        for(int j=0;j<4;j++)
+        {
+        if(i>=j)
+            cout<<"* ";
+            
+        }
+    
+    cout<<endl;
+    }
+return 0;
+}
+```
+- Pattern when i>j give space else put a star
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    
+    for(int i=0;i<4;i++)
+    {
+        for(int j=0;j<4;j++)
+        {
+        if(i>j)
+            cout<<" ";
+        else
+            cout<<"*";
+            
+        }
+    
+    cout<<endl;
+    }
+return 0;
+}
+
+```
