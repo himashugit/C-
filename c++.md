@@ -1989,3 +1989,727 @@ return 0;
 }
 
 ```
+Drawing pattern -3
+
+here sum of i=j is 3 or more.
+
+
+|  0| 1  | 2  |  3 |
+|---|---|---|---|
+|   1|   |   |  * |   
+|  2 |  | *  |  * |   
+|  3 |  * |  * |  * |   
+|  *|  * |  * |  * |  
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    
+    for(int i=0;i<5;i++)
+    {
+        for(int j=0;j<5;j++)
+        {
+            if(i+j>4)
+            cout<<" * ";
+            else
+            cout<<"";
+            
+        }
+    
+    cout<<endl;
+    }
+return 0;
+}
+```
+
+Pattern -4
+|  |  |   |   |
+|---|---|---|---|
+|  * |  * | *  |  * |   
+|  * | * | *  |  * |   
+|  * |  * |  * |  * |   
+|  *|  * |  * |  * |  
+
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int n=5;
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+           cout<<"*";
+            
+        }
+    
+    cout<<endl;
+    }
+return 0;
+}
+```
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    
+    for(int i=0;i<4;i++)
+    {
+        for(int j=0;j<4;j++)
+        {
+           if(i<=j)
+                cout<<"* " ;
+           else
+                cout<<" " ;
+            
+        }
+    
+    cout<<endl;
+    }
+
+}
+```
+
+# 2D Array
+int A[2][3] = { {2,3,4}, {4,7,9} }
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int A[2][3]={{2,3,5}, {5,7,9}};
+    
+    for(int i=0;i<2;i++)
+    {
+        for(int j=0;j<3;j++)
+        {
+        cout<<A[i][j];
+
+        }
+    
+        cout<<endl;
+    }
+}
+```
+MAtrix operation
+
+```c++
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int A[2][3]={{2,3,4}, {5,6,7}};
+    int B[2][3]={{3,5,7}, {1,3,5}};
+    int c[2][3];
+    for (int i=0;i<2;i++)
+    {
+        for (int j=0;j<3;j++)
+        {
+            c[i][j]=A[i][j]+B[i][j];
+        }
+    }
+    for(int i=0;i<2;i++)
+    {
+        for(int j=0;j<3;j++)
+        cout<<c[i][j];
+        cout<<endl;
+    }
+    
+}
+```
+
+# Pointers
+
+1. data var  - int x=10;
+
+2. Address Variable int *p;
+
+- declaraton int *p;
+- initialization p=&x;
+- dereferencing cout<<*p;
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int a=10;
+    int *p=&a;
+    
+    cout<<a<<endl;
+    cout<<&a<<endl; /* this is add of a */
+    cout<<p<<endl; /*address of p */
+    cout<<&p<<endl;/*storing address of a */
+    cout<<*p<<endl;/* dereferencing of pointer, means refering to pointer var value*/
+    
+    return 0;
+    
+}
+```
+
+- Why we need pointers
+
+3 section for running a prof
+
+1. Heap
+2. Stack
+3. code section
+
+- Mem is divided in 3 stacks. When we run a prog., it goes to code section of the prog,
+A program can access code section & stack directly.
+A program doesn't access Heap section directly but can access using the pointer. Suppose we've pointer referencing to var in Heap then it can access it there.
+ 
+ - Using a pointer a prog can access a file in your disk,network devices. In some lang like Java/C# we don't have pointer. They need to run a run time prog to access these setting (JVM)
+
+ In Heap mem is allocated dynamically i.e during the run time of prog
+ when you write a prog in the main section, it will allocate some mem address in stack. Once you create a pointer and assign this to a new array it will take space inside Heap
+
+ ex - int A[5]-{2,5,7,9,3}; //create array inside stack(mem allocation)
+
+ int *p; // this is also take some space in stack(mem allocation)
+
+ p=new int[5]; // a new pointer will be created inside Heap.
+
+
+ One disadvantage for Heap is. This will keep mem pointer as long as your program is running.
+ You need to delete this pointer when you're no longer using it. If it is not in use then this will create a mem leak and this pointer mem will not be use in future prog
+
+ - Pointer Demo (array in heap)
+
+ ```c++
+ #include <iostream>
+
+using namespace std;
+
+int main()
+{
+    
+    int *p=new int[5];
+    p[0]=12;
+    p[1]=15;
+    cout<<p[1]<<endl;
+    
+    delete []p;
+    p=nullptr;
+    
+    
+    return 0;
+    
+}
+```
+- Dynamic Allocation creating size of an array inside stack
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int size;
+    cout<<"Enter number of element";
+    cin>>size;
+    int A[size];
+    
+    cout<<sizeof A<<endl;
+    return 0;
+    
+}
+    
+```
+- Creating an array in heap
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int *p=new int[20];
+    
+    delete []p;
+    p=new int[40];
+    cout<<p<<endl;
+    cout<<*p;
+       
+    return 0;
+    
+}
+```
+
+# Pointer Airthmetic
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int A[5]={2,3,4,5,6};
+    int *p=A;
+    cout<<*p<<endl;
+    p++;
+    cout<<*p<<endl;
+    p--;
+    cout<<*p<<endl;
+    
+    return 0;
+    
+}
+  ```
+
+  - pointer location changing example
+  
+  ```c++
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int A[5]={2,3,4,5,6};
+    int *p=A;
+    cout<<p<<endl;
+    for(int i=0;i<5;i++)
+    {
+        cout<<*p<<endl;
+        p++;
+    }
+    cout<<p<<endl;
+   return 0;
+    
+}
+```
+- this will also  print the same  result
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int A[5]={2,3,4,5,6};
+    int *p=A;
+    cout<<p<<endl;
+    for(int i=0;i<5;i++)
+    {
+        cout<<*(A+i)<<endl;
+       
+       
+    }
+    
+   return 0;
+    
+}
+```
+
+- this will give you the address of the pointers
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int A[5]={2,3,4,5,6};
+    int *p=A;
+    cout<<p<<endl;
+    for(int i=0;i<5;i++)
+    {
+        cout<<A+i<<endl;
+       
+       
+    }
+    
+   return 0;
+    
+}
+```
+
+- this will change the pointer address at the end of execution
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int A[5]={2,3,4,5,6};
+    int *p=A;
+    cout<<p<<endl;
+    for(int i=0;i<5;i++)
+    {
+        cout<<*p<<endl;
+        p++;
+       
+       
+    }
+    cout<<p<<endl;
+    
+   return 0;
+    
+}
+```
+- This will give the pointer location at two different loc based on the operation
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int A[5]={2,3,4,5,6};
+    int *p=A, *q=&A[4];
+    
+    cout<<p-q<<endl;
+    cout<<q-p<<endl;
+    
+    return 0;
+    
+}
+```
+# Problems using pointers
+
+1. Uninitialize ptr
+2. Memory leak
+3. Dangling ptr
+
+
+- below are method to initialize the ptr
+
+> int x=10; //var declared
+
+>int *p; //ptr initialized
+
+>p=&x; // assigned ptr to var
+
+>p=(*int)0*45687 // assigned ptr address value
+
+>p=new int[5]; // assigned a new value to ptr if exist in prog
+
+
+In order to avoid mem leake processes you must first remove the  ptr and then make it as null
+
+```c++
+
+int *p = new int[5]; //heap mem allocated of size array 5
+
+
+deltete []p;
+p=NULL;
+p=0;
+p=nullptr;
+
+```
+
+- In dangling ptr, ptr is initialized and later the ptr assigned to a location in the array got dallocated.
+
+```c++
+
+void main()
+{
+    int *p=new int[5];
+
+    fun(p);
+
+    cout<<*p;
+}
+
+void main()
+{
+    delete []q;
+}
+```
+
+- References in C++ , this is only valid in c++. Once you  assign  a ref to var in C++ it will take the same address value
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+   int x = 5;
+   int &y = x;
+   cout<<x<<endl;
+   x++;
+   y++;
+   cout<<x<<" "<<y<<endl;
+   cout<<&x<<" "<<&y<<endl;
+    
+}
+```
+
+# Strings
+
+
+
+Collection of letters. In a different compiler and based on the version strings char are limited. Generally apprx 2000 char are normal in any compiler or version
+
+name, class, city  - these are strings
+
+2 methods to define in C==
+
+>1. Using char Array
+
+>2. class string
+
+char x='A';  |  A |
+
+char s[10]="Hello";
+
+char s[]="Hello";
+
+char s[]={'H','e','l','l','o','\0'};
+
+char  s[]={65,67,3,65,78,'\0'};
+
+char *S="Hello";
+
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+  char S[]="Hello";
+  cout<<S<<endl;
+    
+}
+```
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+  char S[20];
+  cout<<"Enter your name : "; //here it'll take only one sentenc no space in between as space will be treated as null.
+  cin>>S;
+  cout<<"Welcome"<<" "<<S<<endl;
+    
+}
+```
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+  char S[20];
+  cout<<"Enter your name : ";
+  cin.get(S,20); // get function wull be able to get the space b/w sentences.
+  cout<<"Welcome"<<" "<<S<<endl;
+    
+}
+
+```
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+  char S[20];
+  cout<<"Enter your name : ";
+  cin.getline(S,20);
+  cout<<"Welcome"<<" "<<S<<endl;
+  
+  cout<<"Enter your name one more time : ";
+  cin.get(S,20);
+  cout<<"Welcome"<<" "<<S<<endl;
+    
+}
+```
+# Function in Strings :- 
+- string.h/cstring - This is header fil which has builting function for string.
+
+- To get the len of string we need to add header as cstring 
+
+```c++
+#include <iostream>
+#include<cstring>
+
+using namespace std;
+
+int main()
+{
+  char s[]="Hello";
+  cout<<strlen(s)<<endl;
+  return 0;
+    
+}
+```
+
+- to get the lenght of string for pointer string with space in b/w
+
+```c++
+#include <iostream>
+#include<cstring>
+
+using namespace std;
+
+int main()
+{
+  char *s;
+  cout<<"Enter your string name ";
+  cin.getline(s,100);
+  cout<<"LEength"<<strlen(s)<<endl;
+  return 0;
+    
+}
+```
+- concatenate with defined number
+
+strcat(destination,source);
+
+strncat(dest,source,lenght);
+
+- strcat
+
+```c++
+#include <iostream>
+#include<cstring>
+
+using namespace std;
+
+int main()
+{
+  char s1[29]="good";
+  char s2[35]="day";
+  cout<<strcat(s1,s2)<<endl;
+  return 0;
+    
+}  
+```
+
+- strncat - n  will denote how many no of char to add in the first str.
+
+```c++
+#include <iostream>
+#include<cstring>
+
+using namespace std;
+
+int main()
+{
+  char s1[29]="good";
+  char s2[35]="dae everyone";
+  cout<<strncat.get(s1,s2,1)<<endl;
+  return 0;
+    
+}
+```
+
+
+```c++
+#include <iostream>
+#include<cstring>
+
+using namespace std;
+
+int main()
+{
+  char s1[29]="good";
+  char s2[35]="day";
+  cout<<strcat(s1,s2)<<endl;
+  return 0;
+    
+}
+```
+- strcpy = copy content from destination to source
+
+```c++
+#include <iostream>
+#include<cstring>
+
+using namespace std;
+
+int main()
+{
+  char s1[29]="good";
+  char s2[35]="";
+  strcpy(s2,s1);
+  cout<<s2<<endl;
+  return 0;
+    
+} 
+```
+
+- strstr = this is to find out key in a string
+
+```c++
+#include <iostream>
+#include<cstring>
+
+using namespace std;
+
+int main()
+{
+  char s1[29]="gooddaydaddy";
+  char s2[35]="day";
+  cout<<strstr(s1,s2)<<endl;
+  
+  return 0;
+    
+}  
+```
+- condition if string is not in another string
+
+```c++
+#include <iostream>
+#include<cstring>
+
+using namespace std;
+
+int main()
+{
+    char s1[29]="gooddaydaddy";
+    char s2[35]="night";
+    
+    if(strstr(s1,s2)!=NULL)
+    cout<<strstr(s1,s2)<<endl;
+    
+    else
+    cout<<"Not Found"<<endl;
+  
+  
+  return 0;
+    
+} 
+```
+
+
+
+
